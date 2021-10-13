@@ -1,0 +1,49 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% include "header.html" %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js" integrity="sha384-PsUw7Xwds7x08Ew3exXhqzbhuEYmA2xnwc8BuD6SEr+UmEHlX8/MCltYEodzWA4u" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+
+{% if not all %}
+    <h1 style="text-align:center;">no tasks in this list😞</h1>
+    <img style="display: block;
+  margin: 0 auto;" src="https://i.pinimg.com/200x150/56/89/6b/56896b4e0c8c8e361226e85ba6a10a51.jpg">
+<a style="position:absolute;
+top:9.7%;
+right:0.5%;" href="{{ url_for('new_task',number=num)}}" class="btn btn-secondary btn-lg enabled" role="button" aria-disabled="true">Add new task</a>
+{% endif %}
+{% if all %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 style="text-align:center;">date </h1>
+    </div>
+    <div class="col-6">
+      <h1 style="text-align:center;">task</h1>
+    </div>
+    <div class="col">
+<a style="" href="{{ url_for('new_task',number=num)}}" class="btn btn-secondary btn-lg enabled" role="button" aria-disabled="true">Add new task</a>
+    </div>
+  </div>
+<hr>
+{% endif %}
+{% for i in all %}
+<div style="padding-top:7%;" class="container">
+  <div class="row">
+    <div class="col">
+        <h1 style="text-align:center;">{{i.date}} </h1>
+    </div>
+    <div class="col-6">
+      <h1 style="text-align:center;">{{i.task}}</h1>
+    </div>
+    <div class="col">
+      <a style="text-align:center;" href="{{ url_for('delete_task',number=i.id)}}" class="btn btn-success btn-lg enabled" role="button" aria-disabled="true">Task completed</a>
+    </div>
+  </div>
+</div>
+<hr>
+{% endfor %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+
+

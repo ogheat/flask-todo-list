@@ -1,0 +1,33 @@
+{% include "header.html" %}
+    <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js" integrity="sha384-PsUw7Xwds7x08Ew3exXhqzbhuEYmA2xnwc8BuD6SEr+UmEHlX8/MCltYEodzWA4u" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+        <!-- Responsive navbar-->
+
+        <!-- Page content-->
+        <div class="container">
+            <div class="text-center mt-5">
+                {% if  current_user.is_authenticated %}
+                <h1>Hello, {{id.name}}</h1>
+                {% endif %}
+                {% if not current_user.is_authenticated %}
+                <h1>It is a Todo list site</h1>
+                <br>
+                <p>Login or register to get your own Todo list</p>
+                <a href="{{url_for('registration')}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Registration</a>
+                <a href="{{url_for('login')}}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Login</a>
+                {% endif %}
+                {% if  current_user.is_authenticated %}
+                <a href="{{ url_for('lists') }}"   type="button" class="btn btn-primary btn-lg btn-block">Go to you personal Todo area</a>
+                {% endif %}
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
+
+
+
