@@ -90,7 +90,7 @@ class Tasks(db.Model):
 
     list = relationship("TasksList", back_populates="tasks")
 
-db.create_all()
+
 
 
 def random_unique():
